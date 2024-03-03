@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "online-shop"
+version = "0.1.0"
+description = ""
+authors = ["Anna Tarazanova <an.tarazanova2016@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
