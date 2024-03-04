@@ -12,17 +12,17 @@ def load_data() -> list:
         return data
 
 
-def create_class_objects(data: list) -> None:
+def create_class_objects(data: list) -> list[Category]:
     """
     Создает объекты класса категория и класса продукт
     """
     categories_as_objects = []
     for category in data:
-        category = Category(**category)
         products_as_objects = []
-        for product in category.products:
+        for product in category.get("products", {}):
             product = Product(**product)
             products_as_objects.append(product)
-        category.products = products_as_objects
+        category["products"] = products_as_objects
+        category = Category(**category)
         categories_as_objects.append(category)
-    return
+    return categories_as_objects
