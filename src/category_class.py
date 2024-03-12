@@ -26,7 +26,7 @@ class Category:
         self.__products.append(product)
 
     @property
-    def get_products(self):
+    def products(self):
         """
         Выводит список товаров в формате: Продукт, 80 руб. Остаток: 15 шт.
         """

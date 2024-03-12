@@ -43,7 +43,7 @@ class Product:
         """
         if new_price <= 0:
             print('Введена некорректная цена')
-        elif new_price <= self.__price:
+        elif new_price < self.__price:
             confirmation = input('Вы уверены, что хотите понизить цену? y - да, n - нет')
             if confirmation == 'y':
                 self.__price = new_price
