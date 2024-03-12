@@ -30,7 +30,6 @@ class Category:
         """
         Выводит список товаров в формате: Продукт, 80 руб. Остаток: 15 шт.
         """
-        result = []
         for product in self.__products:
-            result.append(f'{product.name}, int({product.price}) руб. Остаток: {product.quantity} шт.')
-        return result
+            print(f'{product.name}, int({product.price}) руб. Остаток: {product.quantity} шт.')
+        return self.__products
