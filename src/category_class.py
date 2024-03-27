@@ -19,6 +19,15 @@ class Category:
         Category.number_of_categories += 1
         Category.number_of_products += len(self.__products)
 
+    def __str__(self):
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.name}, {self.description}, {self.__products})'
+
+    def __len__(self):
+        return len(self.__products)
+
     def add_product(self, product):
         """
         Принимает объект товара и добавляет в список товаров категории
@@ -31,5 +40,5 @@ class Category:
         Выводит список товаров в формате: Продукт, 80 руб. Остаток: 15 шт.
         """
         for product in self.__products:
-            print(f'{product.name}, int({product.price}) руб. Остаток: {product.quantity} шт.')
+            print(product)
         return self.__products
