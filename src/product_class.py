@@ -21,6 +21,9 @@ class Product:
     def __repr__(self):
         return f'{self.__class__.__name__}({self.name}, {self.description}, {self.__price}, {self.quantity})'
 
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
+
     @classmethod
     def create_product(cls, name, description, price, quantity):
         """
