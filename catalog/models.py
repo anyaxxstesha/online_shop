@@ -63,12 +63,7 @@ class Product(models.Model):
         verbose_name="Дата последнего изменения продукта",
         help_text="Добавьте дату изменения продукта",
     )
-    manufactured_at = models.DateField(
-        blank=True,
-        null=True,
-        verbose_name="Дата производства продукта",
-        help_text="Добавьте дату производства продукта",
-    )
+
 
     class Meta:
         verbose_name = "Продукт"
