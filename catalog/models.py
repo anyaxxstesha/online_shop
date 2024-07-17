@@ -54,12 +54,12 @@ class Product(models.Model):
         verbose_name="Цена", help_text="Укажите стоимость продукта"
     )
     created_at = models.DateField(
+        auto_now_add=True,
         verbose_name="Дата создания продукта",
         help_text="Добавьте дату создания продукта",
     )
     updated_at = models.DateField(
-        blank=True,
-        null=True,
+        auto_now=True,
         verbose_name="Дата последнего изменения продукта",
         help_text="Добавьте дату изменения продукта",
     )
