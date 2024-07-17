@@ -13,6 +13,7 @@
                         <p class="card-text">{{ product.name }}, {{ product.price }}</p>
                         <p class="card-text">Категория: {{ product.category }}</p>
                         <p class="card-text">Описание: {{ product.description | truncatechars:100 }}</p>
+                        <p class="card-text">Версия: {{ product.active_version.version_name }}</p>
                         <p class="card-text">Дата создания: {{ product.created_at }}</p>
                         <p class="card-text">Дата обновления: {{ product.updated_at }}</p>
                         <div class="d-flex justify-content-between align-items-center">
