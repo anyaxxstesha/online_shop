@@ -1,7 +1,11 @@
 import os
 from pathlib import Path
 
+import dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv.load_dotenv(BASE_DIR/'.env')
 
 SECRET_KEY = 'django-insecure-7)zx+x6x5+!xp&6a9tp8uen1=a58wih1ki&@4ty4(9jm$+6i_3'
 
@@ -101,3 +105,13 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smpt.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TSL = False
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
