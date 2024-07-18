@@ -56,14 +56,13 @@ class ProductUpdateView(UpdateView):
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-
 class ProductDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy("catalog:index")
 
 
 class ContactsView(View):
-    template_name = 'catalog/contacts.html'
+    template_name = 'contacts.html'
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
