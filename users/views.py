@@ -1,11 +1,12 @@
 import secrets
 
+from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, FormView
 
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserResetForm
 from users.models import User
 
 from config.settings import EMAIL_HOST_USER
@@ -38,3 +39,26 @@ def email_verification(request, token):
     user.is_active = True
     user.save()
     return redirect(reverse('users:login'))
+
+
+class UserResetView(FormView):
+    form_class = UserResetForm
+    success_url = reverse_lazy('users:login')
+
+    def form_valid(self, form):
+        user = form.user
+        password = self.generate_password()
+        user.password = make_password(password)
+        user.save()
+
+        send_mail(
+            subject='Сброс пароля',
+            message=f'Ваш новый пароль: {password}',
+            from_email=EMAIL_HOST_USER,
+            recipient_list=[user.email],
+        )
+        return super().form_valid(form)
+
+    @staticmethod
+    def generate_password():
+        return secrets.token_hex(5)
