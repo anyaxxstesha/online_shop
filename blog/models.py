@@ -20,7 +20,7 @@ class Post(models.Model):
         null=True,
     )
     preview_image = models.ImageField(
-        upload_to="catalog/images",
+        upload_to="blog/images",
         blank=True,
         null=True,
         verbose_name="Фото",
