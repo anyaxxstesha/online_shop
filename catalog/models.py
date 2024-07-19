@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Category(models.Model):
     title = models.CharField(
@@ -62,6 +64,15 @@ class Product(models.Model):
         auto_now=True,
         verbose_name="Дата последнего изменения продукта",
         help_text="Добавьте дату изменения продукта",
+    )
+    author = models.ForeignKey(
+        User,
+        verbose_name="Автор",
+        help_text="Укажите автора продукта",
+        related_name="products",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
 
     class Meta:
