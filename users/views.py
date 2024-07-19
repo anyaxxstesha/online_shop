@@ -30,6 +30,7 @@ class UserCreateView(CreateView):
             message=f'Для подтверждения вашей почты перейдите по ссылке: {url}',
             from_email=EMAIL_HOST_USER,
             recipient_list=[user.email],
+            fail_silently=False,
         )
         return super().form_valid(form)
 
