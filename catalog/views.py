@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Product, Version
+from catalog.services import get_products_from_cache
 
 
 class ProductListView(ListView):
@@ -20,7 +21,7 @@ class ProductListView(ListView):
         return context
 
     def get_queryset(self):
-        return self.model.objects.filter(is_published=True).order_by("-created_at")
+        return get_products_from_cache().filter(is_published=True).order_by("-created_at")
 
 
 class ProductDetailView(DetailView):
